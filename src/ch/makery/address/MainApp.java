@@ -43,7 +43,7 @@ public class MainApp extends Application {
 	 */
 	public MainApp() {
 		// Add some sample data
-		datosJuego.add(new Juego("Call of Duty: Black Ops 3", "2015"));
+		datosJuego.add(new Juego("Call of Duty: Black Ops  3", "2015"));
 		datosJuego.add(new Juego("Grand Theft Auto V", "2014"));
 		datosJuego.add(new Juego("FIFA 16", "2016"));
 		datosJuego.add(new Juego("Star Wars: Battlefront", "2015"));
