@@ -113,7 +113,7 @@ public class RootLayoutController {
 		Dialogs.create()
 	        .title("AddressApp")
 	        .masthead("About")
-	        .message("Author: Marco Jakob\nWebsite: http://code.makery.ch")
+	        .message("Author: Jose Manuel Rodriguez")
 	        .showInformation();
     }
 
