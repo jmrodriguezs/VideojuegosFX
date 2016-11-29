@@ -2,8 +2,10 @@ package ch.makery.address.model;
 
 import java.time.LocalDate;
 
+import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,19 +20,19 @@ import ch.makery.address.util.LocalDateAdapter;
  *
  * @author Jose Manuel Rodriguez
  */
-public class Person {
+public class Juego {
 
 	private final StringProperty firstName;
 	private final StringProperty lastName;
-	private final StringProperty street;
-	private final IntegerProperty postalCode;
-	private final StringProperty city;
-	private final ObjectProperty<LocalDate> birthday;
+	private final StringProperty plataformas;
+	private final IntegerProperty clasificacion;
+	private final StringProperty genero;
+	private final FloatProperty precio;
 
 	/**
 	 * Default constructor.
 	 */
-	public Person() {
+	public Juego() {
 		this(null, null);
 	}
 	
@@ -40,15 +42,15 @@ public class Person {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public Person(String firstName, String lastName) {
+	public Juego(String firstName, String lastName) {
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 		
 		// Some initial dummy data, just for convenient testing.
-		this.street = new SimpleStringProperty("some street");
-		this.postalCode = new SimpleIntegerProperty(1234);
-		this.city = new SimpleStringProperty("some city");
-		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+		this.plataformas = new SimpleStringProperty("plataforma");
+		this.clasificacion = new SimpleIntegerProperty(12);
+		this.genero = new SimpleStringProperty("genero");
+		this.precio = new SimpleFloatProperty();
 	}
 	
 	public String getFirstName() {
@@ -76,51 +78,51 @@ public class Person {
 	}
 
 	public String getStreet() {
-		return street.get();
+		return plataformas.get();
 	}
 
 	public void setStreet(String street) {
-		this.street.set(street);
+		this.plataformas.set(street);
 	}
 	
 	public StringProperty streetProperty() {
-		return street;
+		return plataformas;
 	}
 
 	public int getPostalCode() {
-		return postalCode.get();
+		return clasificacion.get();
 	}
 
 	public void setPostalCode(int postalCode) {
-		this.postalCode.set(postalCode);
+		this.clasificacion.set(postalCode);
 	}
 	
 	public IntegerProperty postalCodeProperty() {
-		return postalCode;
+		return clasificacion;
 	}
 
 	public String getCity() {
-		return city.get();
+		return genero.get();
 	}
 
 	public void setCity(String city) {
-		this.city.set(city);
+		this.genero.set(city);
 	}
 	
 	public StringProperty cityProperty() {
-		return city;
+		return genero;
 	}
 
 	@XmlJavaTypeAdapter(LocalDateAdapter.class)
-	public LocalDate getBirthday() {
-		return birthday.get();
+	public float getBirthday() {
+		return precio.get();
 	}
 
-	public void setBirthday(LocalDate birthday) {
-		this.birthday.set(birthday);
+	public void setBirthday(float birthday) {
+		this.precio.set(birthday);
 	}
 	
-	public ObjectProperty<LocalDate> birthdayProperty() {
-		return birthday;
+	public FloatProperty birthdayProperty() {
+		return precio;
 	}
 }

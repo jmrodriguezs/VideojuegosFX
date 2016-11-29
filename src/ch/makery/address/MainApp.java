@@ -21,7 +21,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.controlsfx.dialog.Dialogs;
 
-import ch.makery.address.model.Person;
+import ch.makery.address.model.Juego;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.view.BirthdayStatisticsController;
 import ch.makery.address.view.PersonEditDialogController;
@@ -36,28 +36,28 @@ public class MainApp extends Application {
 	/**
 	 * The data as an observable list of Persons.
 	 */
-	private ObservableList<Person> personData = FXCollections.observableArrayList();
+	private ObservableList<Juego> datosJuego = FXCollections.observableArrayList();
 
 	/**
 	 * Constructor
 	 */
 	public MainApp() {
 		// Add some sample data
-		personData.add(new Person("Hans", "Muster"));
-		personData.add(new Person("Ruth", "Mueller"));
-		personData.add(new Person("Heinz", "Kurz"));
-		personData.add(new Person("Cornelia", "Meier"));
-		personData.add(new Person("Werner", "Meyer"));
-		personData.add(new Person("Lydia", "Kunz"));
-		personData.add(new Person("Anna", "Best"));
-		personData.add(new Person("Stefan", "Meier"));
-		personData.add(new Person("Martin", "Mueller"));
+		datosJuego.add(new Juego("Call of Duty: Black Ops 3", "2015"));
+		datosJuego.add(new Juego("Grand Theft Auto V", "2014"));
+		datosJuego.add(new Juego("FIFA 16", "2016"));
+		datosJuego.add(new Juego("Star Wars: Battlefront", "2015"));
+		datosJuego.add(new Juego("Overwatch", "2014"));
+		datosJuego.add(new Juego("Fallout 4", "2015"));
+		datosJuego.add(new Juego("The Last of Us", "2011"));
+		datosJuego.add(new Juego("Uncharted: The Nathan Drake Collection", "2015"));
+		datosJuego.add(new Juego("Heavy Rain", "2009"));
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("AddressApp");
+		this.primaryStage.setTitle("VideojuegosFX");
 
 		// Set the application icon.
 		this.primaryStage.getIcons().add(
@@ -130,7 +130,7 @@ public class MainApp extends Application {
 	 *            the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public boolean showPersonEditDialog(Person person) {
+	public boolean showPersonEditDialog(Juego person) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -180,7 +180,7 @@ public class MainApp extends Application {
 
 			// Set the persons into the controller.
 			BirthdayStatisticsController controller = loader.getController();
-			controller.setPersonData(personData);
+			controller.setPersonData(datosJuego);
 
 			dialogStage.show();
 
@@ -242,8 +242,8 @@ public class MainApp extends Application {
 			// Reading XML from the file and unmarshalling.
 			PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
 
-			personData.clear();
-			personData.addAll(wrapper.getPersons());
+			datosJuego.clear();
+			datosJuego.addAll(wrapper.getPersons());
 
 			// Save the file path to the registry.
 			setPersonFilePath(file);
@@ -270,7 +270,7 @@ public class MainApp extends Application {
 
 			// Wrapping our person data.
 			PersonListWrapper wrapper = new PersonListWrapper();
-			wrapper.setPersons(personData);
+			wrapper.setPersons(datosJuego);
 
 			// Marshalling and saving XML to the file.
 			m.marshal(wrapper, file);
@@ -298,8 +298,8 @@ public class MainApp extends Application {
 	 * 
 	 * @return
 	 */
-	public ObservableList<Person> getPersonData() {
-		return personData;
+	public ObservableList<Juego> getPersonData() {
+		return datosJuego;
 	}
 
 	public static void main(String[] args) {

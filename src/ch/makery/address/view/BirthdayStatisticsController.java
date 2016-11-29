@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
-import ch.makery.address.model.Person;
+import ch.makery.address.model.Juego;
 
 /**
  * The controller for the birthday statistics view.
@@ -48,11 +48,11 @@ public class BirthdayStatisticsController {
      * 
      * @param persons
      */
-    public void setPersonData(List<Person> persons) {
+    public void setPersonData(List<Juego> persons) {
     	// Count the number of people having their birthday in a specific month.
         int[] monthCounter = new int[12];
-        for (Person p : persons) {
-            int month = p.getBirthday().getMonthValue() - 1;
+        for (Juego p : persons) {
+            int month = (int) (p.getBirthday() - 1);
             monthCounter[month]++;
         }
 

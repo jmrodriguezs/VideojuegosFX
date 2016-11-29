@@ -8,16 +8,16 @@ import javafx.scene.control.TableView;
 import org.controlsfx.dialog.Dialogs;
 
 import ch.makery.address.MainApp;
-import ch.makery.address.model.Person;
+import ch.makery.address.model.Juego;
 import ch.makery.address.util.DateUtil;
 
 public class PersonOverviewController {
     @FXML
-    private TableView<Person> personTable;
+    private TableView<Juego> personTable;
     @FXML
-    private TableColumn<Person, String> firstNameColumn;
+    private TableColumn<Juego, String> firstNameColumn;
     @FXML
-    private TableColumn<Person, String> lastNameColumn;
+    private TableColumn<Juego, String> lastNameColumn;
 
     @FXML
     private Label firstNameLabel;
@@ -80,7 +80,7 @@ public class PersonOverviewController {
      * 
      * @param person the person or null
      */
-    private void showPersonDetails(Person person) {
+    private void showPersonDetails(Juego person) {
     	if (person != null) {
     		// Fill the labels with info from the person object.
     		firstNameLabel.setText(person.getFirstName());
@@ -88,7 +88,7 @@ public class PersonOverviewController {
     		streetLabel.setText(person.getStreet());
     		postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
     		cityLabel.setText(person.getCity());
-    		birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+    		birthdayLabel.setText(Float.toString(person.getBirthday()));
     	} else {
     		// Person is null, remove all the text.
     		firstNameLabel.setText("");
@@ -124,7 +124,7 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleNewPerson() {
-		Person tempPerson = new Person();
+		Juego tempPerson = new Juego();
 		boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
 		if (okClicked) {
 			mainApp.getPersonData().add(tempPerson);
@@ -137,7 +137,7 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleEditPerson() {
-		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+		Juego selectedPerson = personTable.getSelectionModel().getSelectedItem();
 		if (selectedPerson != null) {
 			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
 			if (okClicked) {
